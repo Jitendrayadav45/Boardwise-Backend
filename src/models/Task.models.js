@@ -24,7 +24,7 @@ const taskSchema = new mongoose.Schema(
 
     // List where this task exists
 
-    list: {
+    listid: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'List',
       required: true,
@@ -32,7 +32,7 @@ const taskSchema = new mongoose.Schema(
 
     // Board where this task exists
 
-    board: {
+    boardid: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Board',
       required: true,
@@ -79,10 +79,10 @@ const taskSchema = new mongoose.Schema(
 
     //  Position for ordering inside list
 
-    position: {
-      type: Number,
-      default: 0,
-    },
+    // position: {
+    //   type: Number,
+    //   default: 0,
+    // },
 
     //  Comments
 
@@ -91,6 +91,7 @@ const taskSchema = new mongoose.Schema(
         user: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'User',
+          
           required: true,
         },
         text: {
