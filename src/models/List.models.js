@@ -19,7 +19,7 @@ const listSchema = new mongoose.Schema(
     //  Reference to which Board this List belongs
 
 
-    board: {
+    boardid: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Board',
       required: [true, 'Board reference is required'],
@@ -27,24 +27,21 @@ const listSchema = new mongoose.Schema(
 
     // Array of Task IDs inside this List
 
-    tasks: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Task',
-      },
-    ],
+    // tasks: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Task',
+    //   },
+    // ],
 
     //  Position for Left-to-Right Ordering
-
-    position: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-
+    // position: {
+    //   type: Number,
+    //   required: true,
+    //   default: 0,
+    // },
 
     //  Priority for List level
-
 
     priority: {
       type: String,
