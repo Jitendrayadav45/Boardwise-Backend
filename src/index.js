@@ -1,15 +1,13 @@
-// console.log("hello jitendra");
-
 import dotenv from "dotenv";
+dotenv.config({
+    path: "./src/.env"
+});
+
+
 import { app } from "./app.js";
 import { connect } from "mongoose";
 import connectDB from "./db/index.js";
 
-
-
-dotenv.config({
-    path: "./src/.env"
-});
 
 const PORT = process.env.PORT || 8001;
 
