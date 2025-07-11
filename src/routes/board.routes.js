@@ -132,4 +132,83 @@ router.post("/invite", async (req, res) => {
   }
 });
 
+// ✅ Get Boards for a specific user
+router.get("/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const boards = await Board.find({
+      $or: [
+        { ownerId: userId },
+        { members: userId }
+      ]
+    });
+
+    res.json({
+      message: "Boards fetched successfully",
+      boards
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ✅ Update Board (title, description, remove members)
+router.patch("/update/:boardId", async (req, res) => {
+  try {
+    const { boardId } = req.params;
+    const { title, description, removeMembers } = req.body;
+
+    const board = await Board.findById(boardId);
+    if (!board) {
+      return res.status(404).json({ message: "Board not found" });
+    }
+
+    if (title) board.title = title;
+    if (description) board.description = description;
+
+    // ✅ Remove members
+    if (removeMembers && removeMembers.length > 0) {
+      board.members = board.members.filter(
+        (memberId) => !removeMembers.includes(memberId.toString())
+      );
+    }
+
+    await board.save();
+
+    return res.json({
+      message: "Board updated successfully",
+      board,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ✅ Delete Board
+router.delete("/delete/:boardId", async (req, res) => {
+  try {
+    const { boardId } = req.params;
+
+    const board = await Board.findById(boardId);
+    if (!board) {
+      return res.status(404).json({ message: "Board not found" });
+    }
+
+    await Board.deleteOne({ _id: boardId });
+
+    return res.json({
+      message: "Board deleted successfully",
+      boardId,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 export default router;
