@@ -1,1 +1,2 @@
-export const DB_NAME = "boardwise";
+export const DB_NAME = "BoardWise";
+
