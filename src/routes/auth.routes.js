@@ -101,7 +101,7 @@ router.post("/verify-otp", async (req, res) => {
     res.status(201).json({
       message: "User registered successfully",
       user: {
-        id: user._id,
+        userId: user._id,
         name: user.name,
         email: user.email,
       },
@@ -131,7 +131,7 @@ router.post("/login", async (req, res) => {
     res.json({
       message: "Login successful",
       user: {
-        id: user._id,
+        userId: user._id,
         name: user.name,
         email: user.email,
       },
