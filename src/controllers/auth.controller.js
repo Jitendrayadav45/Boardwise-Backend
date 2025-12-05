@@ -23,7 +23,7 @@ export const sendOtp = async (req, res) => {
     );
 
     await transporter.sendMail({
-      from: `"BoardWise" <${process.env.EMAIL_USER}>`,
+      from: `"BoardWise" <official.boardwise@gmail.com>`, // Use a verified sender email
       to: email,
       subject: "Verify Your BoardWise Account - OTP Inside",
       html: `
