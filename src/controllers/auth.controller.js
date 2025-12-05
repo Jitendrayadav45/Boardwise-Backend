@@ -3,7 +3,7 @@ import { User } from "../models/user.models.js";
 import { OTP } from "../models/otp.models.js";
 import { Invitation } from "../models/invitation.models.js";
 import { Board } from "../models/board.models.js";
-import { transporter } from "../config/nodemailer.js";
+import transporter from "../config/nodemailer.js";
 
 export const sendOtp = async (req, res) => {
   try {

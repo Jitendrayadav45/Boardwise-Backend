@@ -1,7 +1,7 @@
 import { Board } from "../models/board.models.js";
 import { User } from "../models/user.models.js";
+import transporter from "../config/nodemailer.js";
 import { Invitation } from "../models/invitation.models.js";
-import { transporter } from "../config/nodemailer.js";
 
 // ✅ Create Board
 export const createBoard = async (req, res) => {
