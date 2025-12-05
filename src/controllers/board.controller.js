@@ -82,7 +82,7 @@ export const inviteUsers = async (req, res) => {
         const link = `http://localhost:3000/register?boardId=${boardId}`;
 
         await transporter.sendMail({
-          from: `"BoardWise" <${process.env.EMAIL_USER}>`,
+          from: `"BoardWise" <official.boardwise@gmail.com>`,
           to: singleEmail,
           subject: "You’re Invited to Join a Board on BoardWise!",
           html: `
